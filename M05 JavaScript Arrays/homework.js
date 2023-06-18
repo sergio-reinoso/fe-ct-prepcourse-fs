@@ -125,19 +125,31 @@ function empiezaConNueve(num) {
    // Esta función recibe por parámetro un número.
    // Debe retornar true si el entero inicia con 9 y false en otro caso.
    // Tu código:
-   const convertirString = num.toString();
-   if(convertirString.filter(elemento => elemento[0] == '9')){
-      return true;
-   } else {
-      return false
-   }
-   // return convertirString.filter(elemento => elemento[0] == '9');
+   let numStr = num.toString();
+
+  // Verificar si el primer carácter es '9'
+  if (numStr.charAt(0) === '9') {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function todosIguales(array) {
    // Si todos los elementos del arreglo son iguales, retornar true.
    // Caso contrario retornar false.
    // Tu código:
+
+   let primerArreglo = array[0];
+
+   for( let i = 0; i < array.length; i++ ){
+      if( array[i] !== primerArreglo ){
+         return false;
+      }
+   }
+
+   return true;
+
 }
 
 function mesesDelAño(array) {
@@ -145,18 +157,37 @@ function mesesDelAño(array) {
    // "Marzo" y "Noviembre", guardarlos en un nuevo arreglo y retornarlo.
    // Si alguno de los meses no está, retornar el string: "No se encontraron los meses pedidos".
    // Tu código:
+   let mesesEncontrar = [];
+
+   if ( array.includes("Enero", "Marzo", "Noviembre") ) {
+      for ( let i = 0; i < array.length; i++ ) {
+         if( array[i] === "Enero" || array[i] === "Marzo" || array[i] === "Noviembre" ){
+            mesesEncontrar.push(array[i]);
+         }
+      }
+      return mesesEncontrar;
+   } else {
+      return "No se encontraron los meses pedidos";
+   }
+
 }
 
 function tablaDelSeis() {
    // Escribe una función que muestre la tabla de multiplicar del 6 (del 0 al 60).
    // La función devuelve un arreglo con los resultados de la tabla de multiplicar del 6 en orden creciente.
    // Tu código:
+   let tabla = [];
+   for (let i = 0; i <= 10; i++) {
+      tabla.push(6 * i);
+   }
+   return tabla;
 }
 
 function mayorACien(array) {
    // La función recibe un arreglo con enteros entre 0 y 200.
    // Recorrerlo y retornar un arreglo con todos los valores mayores a 100 (no incluye el 100).
    // Tu código:
+   return array.filter((num) => {return num > 100});
 }
 
 /* ----------------------------------------------------------------------------------
@@ -170,6 +201,18 @@ function breakStatement(num) {
    // la ejecución y retornar el string: "Se interrumpió la ejecución".
    // [PISTA]: utiliza el statement 'break'.
    // Tu código:
+   let newArray = [];
+   for ( var i = 0; i < 10; i++ ){
+      num += 2;
+      newArray.push(num);
+
+      if (num === i) break;
+
+
+   }
+
+   return i < 10 ? "Se interrumpió la ejecución" : newArray;
+
 }
 
 function continueStatement(num) {
@@ -179,7 +222,17 @@ function continueStatement(num) {
    // se continua con la siguiente iteración.
    // [PISTA]: utiliza el statement 'continue'.
    // Tu código:
+   let newArray = [];
+   for (let i = 0; i < 10; i++) {
+      if (i === 5) {
+         continue;
+      }
+      num += 2;
+      newArray.push(num);
+  }
+  return newArray;
 }
+console.log(breakStatement(1));
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
 module.exports = {
